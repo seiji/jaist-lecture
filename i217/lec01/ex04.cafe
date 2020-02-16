@@ -1,0 +1,25 @@
+open NAT .
+  op sum : Nat -> Nat .
+  op cond : Bool Nat Nat -> Nat .
+  op g : Nat Nat -> Nat .
+  op oedc-sum : Nat -> Nat .
+
+  vars X Y : Nat .
+  var NzX : NzNat .
+  -- sum
+  eq sum(0) = 0 .
+  eq sum(NzX) = NzX + sum(p NzX) .
+  -- cond
+  eq cond(true,X,Y) = X .
+  eq cond(false,X,Y) = Y .
+  -- g
+  eq g(X,Y) = cond(X > Y, g(X,2 * Y) + g(sd(X,Y),2 * Y), X) .
+  -- oedc-sum
+  eq oedc-sum(0) = 0 .
+  eq oedc-sum(NzX) = g(NzX,1) .
+  --
+  red sum(0) == oedc-sum(0) .
+  red sum(1) == oedc-sum(1) .
+  red sum(2) == oedc-sum(2) .
+  red sum(10) == oedc-sum(10) .
+close
