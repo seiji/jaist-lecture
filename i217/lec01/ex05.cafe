@@ -2,7 +2,7 @@ open NAT .
   op ext-fib : Nat -> Nat .
   op ext-sfib : Nat -> Nat .
   op ext-tfib : Nat -> Nat .
-
+  --
   var NzX : NzNat .
   -- ext-fib
   eq ext-fib(0) = 0 .
@@ -19,4 +19,5 @@ open NAT .
   red ext-fib(2) .
   red ext-fib(3) .
   red ext-fib(10) .
+  red ext-fib(20) .
 close

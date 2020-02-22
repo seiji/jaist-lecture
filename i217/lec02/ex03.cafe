@@ -1,0 +1,27 @@
+in ex01 .
+
+mod! MSORT {
+  pr(NATLIST)
+
+  op msort : NatList -> NatList .
+  op merge : NatList NatList -> NatList .
+
+  vars X Y : Nat .
+  vars L LL RL : NatList .
+
+  eq msort(nil) = nil .
+  eq msort(X | nil) = X | nil .
+  eq msort(X | L) = merge(msort(X | nil), msort(L)) .
+
+  eq merge(LL, nil) = msort(LL) .
+  eq merge(nil, RL) = msort(RL) .
+  eq merge(X | LL, Y | RL)
+    = if Y < X then { Y | merge(LL, X | RL) }
+               else { X | merge(Y | LL, RL) } .
+}
+
+open MSORT .
+  red msort(nil) .
+  red msort(5 | nil) .
+  red msort(4 | 7 | 5 | 1 | 0 | 3 | 6 | 2 | nil) .
+close

@@ -1,7 +1,7 @@
 open NAT .
-  op _! : Nat -> Nat .
   op if_then {_} else {_} : Bool Nat Nat -> Nat .
   op g : Nat Nat -> Nat .
+  op _! : Nat -> Nat .
   vars X Y : Nat .
   var NzX : NzNat .
   -- cond

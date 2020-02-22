@@ -9,6 +9,9 @@ open NAT .
   eq sfib(0) = 1 .
   eq sfib(NzX) = fib(NzX) + fib(p NzX) .
   --
+  red fib(0) .
+  red fib(1) .
+  red fib(2) .
   red fib(10) .
   red fib(20) .
   red fib(30) . -- can be computed, although it takes time.

@@ -1,0 +1,36 @@
+in ex01 .
+
+mod! HAMMING {
+  pr(NATLIST)
+
+  op hamming : Nat -> NatList .
+  op gen : NzNat -> NnNatList .
+  op filter : NnNatList NatList -> NatList .
+
+  var X : NzNat .
+  vars L LL : NatList .
+
+  eq hamming(0) = nil .
+  eq hamming(X) = filter(gen(X), nil) .
+  eq gen(X) = [1 .. X] .
+  eq filter(nil, LL) = LL .
+  eq filter(X | L, LL) =
+    if X rem 2 == 0 then {
+        filter(L, LL @ (X | nil) )
+    } else {
+      if X rem 3 == 0 then {
+        filter(L, LL @ (X | nil) )
+      } else {
+        if X rem 5 == 0 then {
+          filter(L, LL @ (X | nil) )
+        } else {
+          filter(L, LL)
+        }
+      }
+    } .
+}
+
+open HAMMING .
+  red hamming(0) .
+  red hamming(10) .
+close

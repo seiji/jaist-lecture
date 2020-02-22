@@ -1,0 +1,22 @@
+mod! GLIST1(E :: TRIV) {
+  [Nil NnList < List]
+  op nil : -> Nil { constr } .
+  op _|_ : Elt.E List -> NnList { constr } .
+  op _@_ : List List -> List .
+  var X : Elt.E .
+  vars L L2 : List .
+  eq nil @ L2 = L2 .
+  eq (X | L) @ L2 =  X | (L @ L2) .
+}
+
+view TRIV2NAT from TRIV to NAT {
+  sort Elt -> Nat
+}
+
+mod! NATLIST1 {
+  pr(GLIST1(E <= TRIV2NAT))
+}
+
+open NATLIST1 .
+  red (4 | 3 | nil) @ (2 | 1 | 0 | nil) .
+close

@@ -1,0 +1,22 @@
+mod! PNAT1 {
+  [PNat]
+  op 0 : -> PNat {constr} .
+  op s : PNat -> PNat {constr} .
+  op _+_ : PNat PNat -> PNat .
+  op _*_ : PNat PNat -> PNat .
+  vars X Y Z : PNat .
+  eq (0 = s(Y)) = false .
+  eq (s(X) = s(Y)) = (X = Y) .
+  eq 0 + Y = Y .
+  eq s(X) + Y = s(X + Y) .
+  eq 0 * Y = 0 .
+  eq s(X) * Y = (X * Y) + Y .
+
+}
+
+open PNAT1 .
+  ops x y z : -> PNat .
+  eq (x + Y) + Z = x + (Y + Z) .
+  red (0 + y) + z = 0 + (y + z) .
+  red (s(x) + y) + z = s(x) + (y + z) .
+close

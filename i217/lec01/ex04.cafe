@@ -3,9 +3,9 @@ open NAT .
   op cond : Bool Nat Nat -> Nat .
   op g : Nat Nat -> Nat .
   op oedc-sum : Nat -> Nat .
-
-  vars X Y : Nat .
+  --
   var NzX : NzNat .
+  vars X Y : Nat .
   -- sum
   eq sum(0) = 0 .
   eq sum(NzX) = NzX + sum(p NzX) .
